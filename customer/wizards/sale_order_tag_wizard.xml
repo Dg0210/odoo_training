@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="select_order_view" model="ir.ui.view">
+            <field name="name">select_order</field>
+            <field name="model">select.order</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="tag_id" string="Tag"/>
+                            <field name="order_ids" widget="many2many_tags"/>
+                        </group>
+                        <footer>
+                            <button string="Xác nhận" name="button_save_order" type="object" class="oe_highlight"/>
+                            <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="select_order_act_view" model="ir.actions.act_window">
+            <field name="name">Chọn</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">select.order</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

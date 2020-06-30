@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+         <report
+            id="customer_sale_quotations_report1"
+            model="sale.order"
+            report_type="qweb-pdf"
+            string="In phiếu tên"
+            name="customer.sale_quotations_report"
+            file="customer.sale_quotations_report"
+        />
+
+        <template id="sale_quotations_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                        <div class="page">
+
+                        <style>
+                        .page {
+                            font-family: Tahoma, Geneva, sans-serif !important;
+                            font-size: 14px !important;
+                            margin-top: 10px !important;
+                        }
+                        </style>
+
+                        <div class="text-center">
+                            <h3>In phiếu tên</h3>
+                            <p>Thời gian: <span t-field="o.create_date"/></p>
+                        </div>
+                        <br/>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th name="name_order">Tên đơn hàng</th>
+                                    <th class="customer">Khách hàng</th>
+                                    <th class="Salesman">Nhân viên kinh doanh</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span t-field="o.name"/></td>
+                                    <td><span t-field="o.user_id"/></td>
+                                    <td><span t-field="o.partner_id"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
